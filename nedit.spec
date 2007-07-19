@@ -6,7 +6,7 @@
 Summary:	A text editor for the X Window System
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPL
 Url:		http://www.nedit.org/
 Group:		Editors
@@ -65,17 +65,7 @@ rm -rf $RPM_BUILD_ROOT
   install -m 755 nc $RPM_BUILD_ROOT%{_bindir}/ncl
 )
 
-# Mandrake menu entries
-install -d -m0755 %{buildroot}%{_menudir}
-cat > %{buildroot}%{_menudir}/%{name} << EOF
-?package(%{name}): command="nedit" \
-icon="editors_section.png" \
-needs="x11" \
-title="Nedit" \
-longtitle="A text editor based on lesstif" \
-section="Applications/Editors" \
-xdg=true
-EOF
+# Mandriva menu entry
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -89,7 +79,7 @@ Terminal=false
 Type=Application
 StartupNotify=true
 MimeType=text/plain;
-Categories=Utility;TextEditor;X-MandrivaLinux-MoreApplications-Editors;
+Categories=Utility;TextEditor;
 EOF
 
 %post
@@ -110,5 +100,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/%{name}.1*
 %{_mandir}/man1/ncl.1*
 %{_datadir}/applications/mandriva-%{name}.desktop
-
-
