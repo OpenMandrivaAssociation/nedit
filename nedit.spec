@@ -96,7 +96,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc README ReleaseNotes doc/nedit.doc
 %{_bindir}/%{name}
 %{_bindir}/ncl
-%{_menudir}/%{name}
 %{_mandir}/man1/%{name}.1*
 %{_mandir}/man1/ncl.1*
 %{_datadir}/applications/mandriva-%{name}.desktop
