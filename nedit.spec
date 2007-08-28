@@ -70,7 +70,6 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
-Encoding=UTF-8
 Name=%{title}
 Comment=%{longtitle}
 Exec=%{_bindir}/%{name}
