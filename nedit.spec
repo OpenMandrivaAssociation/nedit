@@ -73,7 +73,7 @@ cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 Name=%{title}
 Comment=%{longtitle}
 Exec=%{_bindir}/%{name}
-Icon=editors_section.png
+Icon=editors_section
 Terminal=false
 Type=Application
 StartupNotify=true
