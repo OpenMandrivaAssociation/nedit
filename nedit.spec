@@ -21,7 +21,7 @@ Patch5: nedit-5.5-varfix.patch
 Patch6: nedit-5.5-nc-manfix.patch
 Patch7: nedit-5.5-visfix.patch
 
-BuildRequires:	byacc lesstif-devel >= 0.93 XFree86-devel xpm-devel
+BuildRequires:	byacc lesstif-devel >= 0.93 X11-devel xpm-devel
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
