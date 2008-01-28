@@ -6,7 +6,7 @@
 Summary:	A text editor for the X Window System
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	GPL
 URL:		http://www.nedit.org/
 Group:		Editors
@@ -22,6 +22,7 @@ Patch6: 	nedit-5.5-nc-manfix.patch
 Patch7: 	nedit-5.5-visfix.patch
 
 BuildRequires:	byacc lesstif-devel >= 0.93 X11-devel xpm-devel
+Requires:	x11-font-adobe-100dpi
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
