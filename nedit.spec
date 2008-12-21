@@ -1,27 +1,25 @@
-%define	name	nedit
-%define	version	5.5
-%define title Nedit
-%define longtitle A text editor for the X Window System
-
 Summary:	A text editor for the X Window System
-Name:		%{name}
-Version:	%{version}
-Release:	%mkrel 6
-License:	GPL
+Name:		nedit
+Version:	5.5
+Release:	%mkrel 7
+License:	GPLv2+ with exception
 URL:		http://www.nedit.org/
 Group:		Editors
-
 Source0:	%{name}-%{version}-src.tar.bz2
 Patch0:		nedit-5.4-Makefile.patch
-Patch1:		nedit-5.4-security.patch
+Patch1:		nedit-5.5-security.patch
 Patch2:		nedit-5.5-utf8.patch
 Patch3:		nedit-5.5-64bit-fixes.patch
 Patch4: 	nedit-5.5-motif223.patch
 Patch5: 	nedit-5.5-varfix.patch
 Patch6: 	nedit-5.5-nc-manfix.patch
 Patch7: 	nedit-5.5-visfix.patch
-
-BuildRequires:	byacc lesstif-devel >= 0.93 X11-devel xpm-devel
+# Fix some string literal errors - AdamW 2008/12
+Patch8:		nedit-5.5-literal.patch
+BuildRequires:	byacc
+BuildRequires:	lesstif-devel >= 0.93
+BuildRequires:	X11-devel
+BuildRequires:	xpm-devel
 Requires:	x11-font-adobe-100dpi
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -45,34 +43,35 @@ be used productively by just about anyone who needs to edit text.
 %patch5 -p1 -b .varfix
 %patch6 -p1 -b .nc-manfix
 %patch7 -p1 -b .visfix
+%patch8 -p1 -b .literal
 
 # make it lib64 aware
 perl -pi -e "s,(/usr/X11R6)/lib\b,\1/%{_lib},g" makefiles/Makefile.linux
 
 %build
-echo | %make linux OPT="$RPM_OPT_FLAGS -DBUILD_UNTESTED_NEDIT"
+echo | %make linux OPT="%{optflags} -DBUILD_UNTESTED_NEDIT"
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 (cd doc;
-  mkdir -p $RPM_BUILD_ROOT%{_mandir}/man1
-  install -m 644 nedit.man $RPM_BUILD_ROOT%{_mandir}/man1/%{name}.1
-  install -m 644 nc.man $RPM_BUILD_ROOT%{_mandir}/man1/ncl.1
+  mkdir -p %{buildroot}%{_mandir}/man1
+  install -m 644 nedit.man %{buildroot}%{_mandir}/man1/%{name}.1
+  install -m 644 nc.man %{buildroot}%{_mandir}/man1/ncl.1
 )
 (cd source;
-  mkdir -p $RPM_BUILD_ROOT%{_bindir}
-  install -m 755 nedit $RPM_BUILD_ROOT%{_bindir}/nedit
-  install -m 755 nc $RPM_BUILD_ROOT%{_bindir}/ncl
+  mkdir -p %{buildroot}%{_bindir}
+  install -m 755 nedit %{buildroot}%{_bindir}/nedit
+  install -m 755 nc %{buildroot}%{_bindir}/ncl
 )
 
 # Mandriva menu entry
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
-Name=%{title}
-Comment=%{longtitle}
+Name=NEdit
+Comment=A text editor for the X Window System
 Exec=%{_bindir}/%{name}
 Icon=editors_section
 Terminal=false
@@ -93,7 +92,7 @@ EOF
 %endif
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
