@@ -17,9 +17,9 @@ Patch7: 	nedit-5.5-visfix.patch
 # Fix some string literal errors - AdamW 2008/12
 Patch8:		nedit-5.5-literal.patch
 BuildRequires:	byacc
-BuildRequires:	lesstif-devel >= 0.93
-BuildRequires:	X11-devel
-BuildRequires:	xpm-devel
+BuildRequires:	libx11-devel
+BuildRequires:	lesstif-devel
+BuildRequires:	libxt-devel
 Requires:	x11-font-adobe-100dpi
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -49,7 +49,7 @@ be used productively by just about anyone who needs to edit text.
 perl -pi -e "s,(/usr/X11R6)/lib\b,\1/%{_lib},g" makefiles/Makefile.linux
 
 %build
-echo | %make linux OPT="%{optflags} -DBUILD_UNTESTED_NEDIT"
+echo | %make linux OPT="%{optflags} -DBUILD_UNTESTED_NEDIT %ldflags"
 
 %install
 rm -rf %{buildroot}
