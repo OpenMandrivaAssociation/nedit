@@ -1,7 +1,7 @@
 Summary:	A text editor for the X Window System
 Name:		nedit
 Version:	5.5
-Release:	%mkrel 8
+Release:	%mkrel 9
 License:	GPLv2+ with exception
 URL:		http://www.nedit.org/
 Group:		Editors
