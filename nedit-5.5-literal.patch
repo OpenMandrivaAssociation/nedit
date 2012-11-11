@@ -1,0 +1,11 @@
+--- nedit-5.5/source/preferences.c	2004-08-20 12:33:20.000000000 -0700
++++ nedit-5.5/source/preferences.c.new	2008-12-20 21:39:09.000000000 -0800
+@@ -1374,7 +1374,7 @@
+     } else
+     {
+         fprintf(stderr, "Could not read additional preferences file: ");
+-        fprintf(stderr, filename);
++        fprintf(stderr, "%s", filename);
+         fprintf(stderr, "\n");
+     }
+ }

@@ -1,0 +1,16 @@
+--- nedit-5.4/makefiles/Makefile.linux.Makefile	2003-05-20 02:27:56.000000000 +0200
++++ nedit-5.4/makefiles/Makefile.linux	2004-07-28 08:16:04.858216832 +0200
+@@ -17,11 +17,11 @@ AR=ar
+ # To test if the Motif library exports the runtime version
+ # add -DHAVE__XMVERSIONSTRING to CFLAGS
+ #
+-CFLAGS=-O -I/usr/X11R6/include -DUSE_DIRENT -DUSE_LPR_PRINT_CMD
++CFLAGS=-O -I/usr/X11R6/include -DUSE_DIRENT -DUSE_LPR_PRINT_CMD $(OPT)
+ 
+ ARFLAGS=-urs
+ 
+-LIBS= -L/usr/X11R6/lib -Wl,-Bstatic -lXm -Wl,-Bdynamic -lXp -lXpm -lXext -lXt -lSM -lICE -lX11 -lm
++LIBS= -L/usr/X11R6/lib -lXm -lXt -lX11 -lm
+ 
+ include Makefile.common
+ 

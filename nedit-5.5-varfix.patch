@@ -1,0 +1,11 @@
+--- nedit-5.5/source/server.c.varfix	2004-07-21 13:32:05.000000000 +0200
++++ nedit-5.5/source/server.c	2005-01-12 11:12:08.989922248 +0100
+@@ -340,7 +340,7 @@ static void processServerCommandString(c
+     char *fullname, filename[MAXPATHLEN], pathname[MAXPATHLEN];
+     char *doCommand, *geometry, *langMode, *inPtr;
+     int editFlags, stringLen = strlen(string);
+-    int lineNum, createFlag, readFlag, iconicFlag, lastIconic = 0, tabbed;
++    int lineNum, createFlag, readFlag, iconicFlag, lastIconic = 0, tabbed = 0;
+     int fileLen, doLen, lmLen, geomLen, charsRead, itemsRead;
+     WindowInfo *window, *lastFile = NULL;
+     long currentDesktop = QueryCurrentDesktop(TheDisplay, 

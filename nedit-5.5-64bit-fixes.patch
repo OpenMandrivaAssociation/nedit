@@ -1,0 +1,44 @@
+--- nedit-5.5/source/text.c.64bit-fixes	2004-07-28 14:02:03.000000000 -0400
++++ nedit-5.5/source/text.c	2005-02-24 07:50:42.839645569 -0500
+@@ -3218,7 +3218,7 @@ static void scrollLeftAP(Widget w, XEven
+     if (*nArgs == 0 || sscanf(args[0], "%d", &nPixels) != 1)
+     	return;
+     XtVaGetValues(textD->hScrollBar, XmNmaximum, &sliderMax, 
+-   	XmNsliderSize, &sliderSize, 0);
++   	XmNsliderSize, &sliderSize, NULL);
+     horizOffset = min(max(0, textD->horizOffset - nPixels), sliderMax - sliderSize);
+     if (textD->horizOffset != horizOffset) {
+ 	TextDSetScroll(textD, textD->topLineNum, horizOffset);
+@@ -3235,7 +3235,7 @@ static void scrollRightAP(Widget w, XEve
+     if (*nArgs == 0 || sscanf(args[0], "%d", &nPixels) != 1)
+     	return;
+     XtVaGetValues(textD->hScrollBar, XmNmaximum, &sliderMax, 
+-    	    XmNsliderSize, &sliderSize, 0);
++    	    XmNsliderSize, &sliderSize, NULL);
+     horizOffset = min(max(0, textD->horizOffset + nPixels), sliderMax - sliderSize);
+     if (textD->horizOffset != horizOffset) {
+ 	TextDSetScroll(textD, textD->topLineNum, horizOffset);
+--- nedit-5.5/source/window.c.64bit-fixes	2004-09-15 18:50:58.000000000 -0400
++++ nedit-5.5/source/window.c	2005-02-24 07:51:25.292209165 -0500
+@@ -1157,7 +1157,7 @@ void SplitPane(WindowInfo *window)
+     if (window->backlightChars)
+     {
+         XtVaSetValues(text, textNbacklightCharTypes,
+-                window->backlightCharTypes, 0);
++                window->backlightCharTypes, NULL);
+     }
+     XtManageChild(text);
+     window->textPanes[window->nPanes++] = text;
+@@ -3016,10 +3016,10 @@ void SetBacklightChars(WindowInfo *windo
+       window->backlightCharTypes = NULL;
+ 
+     XtVaSetValues(window->textArea,
+-          textNbacklightCharTypes, window->backlightCharTypes, 0);
++          textNbacklightCharTypes, window->backlightCharTypes, NULL);
+     for (i=0; i<window->nPanes; i++)
+       XtVaSetValues(window->textPanes[i],
+-              textNbacklightCharTypes, window->backlightCharTypes, 0);
++              textNbacklightCharTypes, window->backlightCharTypes, NULL);
+     if (is_applied != do_apply)
+       SetToggleButtonState(window, window->backlightCharsItem, do_apply, False);
+ }
