@@ -103,3 +103,77 @@ rm -rf %{buildroot}
 %{_mandir}/man1/ncl.1*
 %{_datadir}/applications/mandriva-%{name}.desktop
 
+
+
+%changelog
+* Mon Dec 06 2010 Oden Eriksson <oeriksson@mandriva.com> 5.5-9mdv2011.0
++ Revision: 613006
+- the mass rebuild of 2010.1 packages
+
+* Fri Apr 30 2010 Funda Wang <fwang@mandriva.org> 5.5-8mdv2010.1
++ Revision: 541224
+- build with correct BRs
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+
+* Sun Dec 21 2008 Adam Williamson <awilliamson@mandriva.org> 5.5-7mdv2009.1
++ Revision: 316923
+- rebuild
+- new license policy
+- small cleanups
+- add literal.patch to fix string literal issues
+- rediff security.patch
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+* Mon Jan 28 2008 Adam Williamson <awilliamson@mandriva.org> 5.5-6mdv2008.1
++ Revision: 159380
+- requires x11-font-adobe-100dpi (#34665)
+- restore spec (tv's last commit somehow left it completely empty)
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+    - buildrequires X11-devel instead of XFree86-devel
+    - do not harcode icon extension
+    - kill desktop-file-validate's 'warning: key "Encoding" in group "Desktop Entry" is deprecated'
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Thu Jul 19 2007 Adam Williamson <awilliamson@mandriva.org> 5.5-5mdv2008.0
++ Revision: 53641
+- oops, drop menu entry from file list
+- rebuild with new lesstif
+- drop old menu and X-Mandriva category
+
+
+* Fri Mar 02 2007 Jérôme Soyer <saispo@mandriva.org> 5.5-4mdv2007.0
++ Revision: 130949
+- Fix menu entry
+
+  + Olivier Thauvin <nanardon@mandriva.org>
+    - fallback to lesstif to not break cross media requirement
+    - xdg menu
+
+* Wed Feb 21 2007 Jérôme Soyer <saispo@mandriva.org> 5.5-3mdv2007.1
++ Revision: 123196
+- Fix bug #28760
+- Import nedit
+
+* Sun Jan 01 2006 Mandriva Linux Team <http://www.mandrivaexpert.com/> 5.5-2mdk
+- Rebuild
+
+* Thu Feb 24 2005 Gwenole Beauchesne <gbeauchesne@mandrakesoft.com> 5.5-1mdk
+- 5.5
+- some 64-bit fixes, though x86_64 was not affected
+
+* Sat Aug 21 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 5.4-2mdk
+- fix typo in menu entry
+
+* Thu Jul 29 2004 Per �yvind Karlsen <peroyvind@linux-mandrake.com> 5.4-1mdk
+- 5.4
+- sync with fedora patches
+
