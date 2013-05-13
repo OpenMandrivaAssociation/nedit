@@ -1,7 +1,7 @@
 Summary:	A text editor for the X Window System
 Name:		nedit
 Version:	5.5
-Release:	%mkrel 9
+Release:	10
 License:	GPLv2+ with exception
 URL:		http://www.nedit.org/
 Group:		Editors
@@ -21,7 +21,6 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	lesstif-devel
 BuildRequires:	pkgconfig(xt)
 Requires:	x11-font-adobe-100dpi
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 NEdit is a multi-purpose text editor for the X Window System, which
