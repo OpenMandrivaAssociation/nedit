@@ -17,9 +17,9 @@ Patch7: 	nedit-5.5-visfix.patch
 # Fix some string literal errors - AdamW 2008/12
 Patch8:		nedit-5.5-literal.patch
 BuildRequires:	byacc
-BuildRequires:	libx11-devel
+BuildRequires:	pkgconfig(x11)
 BuildRequires:	lesstif-devel
-BuildRequires:	libxt-devel
+BuildRequires:	pkgconfig(xt)
 Requires:	x11-font-adobe-100dpi
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
