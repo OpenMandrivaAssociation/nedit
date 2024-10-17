@@ -3,7 +3,7 @@ Name:		nedit
 Version:	5.5
 Release:	11
 License:	GPLv2+ with exception
-URL:		http://www.nedit.org/
+URL:		https://www.nedit.org/
 Group:		Editors
 Source0:	%{name}-%{version}-src.tar.bz2
 Patch0:		nedit-5.4-Makefile.patch
